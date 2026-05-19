@@ -1,0 +1,8 @@
+aiohttp
+aiosqlite
+bcrypt
+fastapi
+jinja2
+python-multipart
+uvicorn
+python-dotenv
