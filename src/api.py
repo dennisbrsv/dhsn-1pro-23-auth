@@ -18,14 +18,14 @@ def create_app() -> FastAPI:
     app = FastAPI(title="Auth Demo", lifespan=lifespan)
 
     _add_routes(app)
+    app.include_router(index.router)
+    app.include_router(protected.router)
     _add_middleware(app, settings)
 
     return app
 
 def _add_routes(app: FastAPI) -> None:
-    app.include_router(index.router)
     app.include_router(auth.router)
-    app.include_router(protected.router)
 
 def _add_middleware(app: FastAPI, settings: Settings) -> None:
     app.add_middleware(JwtAuthMiddleware, settings=settings)
